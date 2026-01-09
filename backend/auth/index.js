@@ -133,6 +133,12 @@ router.post("/signup", async (req, res) => {
         .send({ error: "Username and password are required" });
     }
 
+    if (username.length < 3 || username.length > 20) {
+      return res
+        .status(400)
+        .send({ error: "Username must be between 3 and 20 characters" });
+    }
+
     if (password.length < 6) {
       return res
         .status(400)
@@ -185,7 +191,6 @@ router.post("/login", async (req, res) => {
 
     // Find user
     const user = await User.findOne({ where: { username } });
-    user.checkPassword(password);
     if (!user) {
       return res.status(401).send({ error: "Invalid credentials" });
     }
@@ -226,18 +231,40 @@ router.post("/logout", (req, res) => {
 });
 
 // Get current user route (protected)
-router.get("/me", (req, res) => {
+router.get("/me", async (req, res) => {
   const token = req.cookies.token;
 
   if (!token) {
     return res.send({});
   }
 
-  jwt.verify(token, JWT_SECRET, (err, user) => {
+  jwt.verify(token, JWT_SECRET, async (err, tokenUser) => {
     if (err) {
       return res.status(403).send({ error: "Invalid or expired token" });
     }
-    res.send({ user: user });
+    
+    // Fetch full user data including avatar from database
+    try {
+      const user = await User.findByPk(tokenUser.id, {
+        attributes: ["id", "username", "email", "bio", "avatar", "createdAt"],
+      });
+      
+      if (user) {
+        res.send({ user: {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          bio: user.bio,
+          avatar: user.avatar,
+          createdAt: user.createdAt,
+        } });
+      } else {
+        res.send({ user: tokenUser });
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      res.send({ user: tokenUser });
+    }
   });
 });
 

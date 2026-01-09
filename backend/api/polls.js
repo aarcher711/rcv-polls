@@ -75,7 +75,7 @@ router.post("/", optionalAuthenticateJWT, async (req, res) => {
         {
           model: User,
           as: "creator",
-          attributes: ["id", "username"],
+          attributes: ["id", "username", "avatar"],
           required: false,
         },
       ],
@@ -97,7 +97,7 @@ router.get("/my-polls", authenticateJWT, async (req, res) => {
         {
           model: User,
           as: "creator",
-          attributes: ["id", "username"],
+          attributes: ["id", "username", "avatar"],
           required: false,
         },
       ],
@@ -136,7 +136,7 @@ router.get("/all", async (req, res) => {
         {
           model: User,
           as: "creator",
-          attributes: ["id", "username"],
+          attributes: ["id", "username", "avatar"],
           required: false,
         },
       ],
@@ -160,7 +160,7 @@ router.get("/share/:shareLink", async (req, res) => {
         {
           model: User,
           as: "creator",
-          attributes: ["id", "username"],
+          attributes: ["id", "username", "avatar"],
           required: false,
         },
       ],
@@ -185,7 +185,7 @@ router.get("/:id", authenticateJWT, async (req, res) => {
         {
           model: User,
           as: "creator",
-          attributes: ["id", "username"],
+          attributes: ["id", "username", "avatar"],
           required: false,
         },
       ],
@@ -233,7 +233,7 @@ router.patch("/:id/status", authenticateJWT, async (req, res) => {
         {
           model: User,
           as: "creator",
-          attributes: ["id", "username"],
+          attributes: ["id", "username", "avatar"],
           required: false,
         },
       ],

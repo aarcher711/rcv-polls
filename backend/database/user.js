@@ -28,6 +28,14 @@ const User = db.define("user", {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  bio: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+  },
+  avatar: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+  },
 });
 
 // Instance method to check password
