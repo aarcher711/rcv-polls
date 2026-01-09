@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import CreatePoll from "./components/CreatePoll";
 import BrowsePolls from "./components/BrowsePolls";
+import Profile from "./components/Profile";
 import NotFound from "./components/NotFound";
 import { API_URL, SOCKETS_URL, NODE_ENV } from "./shared";
 import { io } from "socket.io-client";
@@ -69,6 +70,7 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/create-poll" element={<CreatePoll user={user} />} />
           <Route path="/browse-polls" element={<BrowsePolls />} />
+          <Route path="/profile/:username" element={<Profile user={user} setUser={setUser} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

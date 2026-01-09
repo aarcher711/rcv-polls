@@ -4,21 +4,28 @@
   align-items: center;
   min-height: 60vh;
   padding: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .auth-form {
-  background: white;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .auth-form h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: #1a5f7a;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+  font-weight: 700;
 }
 
 .form-group {
@@ -35,16 +42,20 @@
 .form-group input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
   font-size: 1rem;
-  transition: border-color 0.2s;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  color: #1a5f7a;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.3);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .form-group input.error {
@@ -70,18 +81,21 @@
 .auth-form button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #007bff;
+  background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
   color: white;
-  border: none;
-  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(68, 160, 141, 0.3);
 }
 
 .auth-form button:hover:not(:disabled) {
-  background-color: #0056b3;
+  background: linear-gradient(135deg, #44A08D 0%, #3a8a7a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(68, 160, 141, 0.4);
 }
 
 .auth-form button:disabled {
@@ -137,10 +151,14 @@
 }
 
 .auth-link a {
-  color: #007bff;
+  color: #1a5f7a;
   text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .auth-link a:hover {
+  color: #0d4a63;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
   text-decoration: underline;
 }

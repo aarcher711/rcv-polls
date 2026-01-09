@@ -1,0 +1,356 @@
+.profile-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 60vh;
+  position: relative;
+  z-index: 1;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #2c5f7a;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.error-message {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #1a5f7a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.profile-header {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar-section {
+  flex-shrink: 0;
+}
+
+.profile-avatar-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar-input {
+  display: none;
+}
+
+.avatar-upload-label {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  color: #1a5f7a;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.avatar-upload-label:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h1 {
+  font-size: 2.5rem;
+  color: #1a5f7a;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.profile-joined {
+  color: #2c5f7a;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.edit-profile-btn {
+  padding: 0.6rem 1.5rem;
+  background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(68, 160, 141, 0.3);
+}
+
+.edit-profile-btn:hover {
+  background: linear-gradient(135deg, #44A08D 0%, #3a8a7a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(68, 160, 141, 0.4);
+}
+
+.edit-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(68, 160, 141, 0.3);
+}
+
+.save-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #44A08D 0%, #3a8a7a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(68, 160, 141, 0.4);
+}
+
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  color: #1a5f7a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profile-bio-section,
+.profile-polls-section {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.profile-bio-section h2,
+.profile-polls-section h2 {
+  color: #1a5f7a;
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+}
+
+.profile-bio {
+  color: #2c5f7a;
+  line-height: 1.6;
+  font-size: 1rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.bio-textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  color: #1a5f7a;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.bio-textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.3);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.polls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.profile-polls-section .poll-card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-polls-section .poll-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.profile-polls-section .poll-image-container {
+  width: 100%;
+  margin: -1.5rem -1.5rem 1rem -1.5rem;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.profile-polls-section .poll-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.poll-card-content h3 {
+  color: #1a5f7a;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.poll-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-open {
+  background-color: rgba(212, 237, 218, 0.8);
+  color: #155724;
+}
+
+.status-closed {
+  background-color: rgba(248, 215, 218, 0.8);
+  color: #721c24;
+}
+
+.status-draft {
+  background-color: rgba(255, 243, 205, 0.8);
+  color: #856404;
+}
+
+.poll-date {
+  color: #2c5f7a;
+  font-size: 0.85rem;
+}
+
+.profile-polls-section .view-poll-btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 0.6rem;
+  background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(68, 160, 141, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: auto;
+}
+
+.profile-polls-section .view-poll-btn:hover {
+  background: linear-gradient(135deg, #44A08D 0%, #3a8a7a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(68, 160, 141, 0.4);
+}
+
+.no-polls {
+  color: #2c5f7a;
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-info h1 {
+    font-size: 2rem;
+  }
+
+  .polls-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

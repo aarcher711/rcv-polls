@@ -171,9 +171,30 @@ const BrowsePolls = () => {
                   <div className="poll-card-footer">
                     <div className="poll-meta">
                       <span className="poll-creator">
-                        {poll.creator
-                          ? `Created by ${poll.creator.username}`
-                          : "Anonymous"}
+                        {poll.creator ? (
+                          <Link
+                            to={`/profile/${poll.creator.username}`}
+                            className="creator-link"
+                          >
+                            {poll.creator.avatar ? (
+                              <img
+                                src={poll.creator.avatar}
+                                alt={poll.creator.username}
+                                className="creator-avatar"
+                                onError={(e) => {
+                                  e.target.style.display = "none";
+                                }}
+                              />
+                            ) : (
+                              <span className="creator-avatar-initial">
+                                {poll.creator.username?.[0]?.toUpperCase() || "A"}
+                              </span>
+                            )}
+                            <span>Created by {poll.creator.username}</span>
+                          </Link>
+                        ) : (
+                          "Anonymous"
+                        )}
                       </span>
                       <span className="poll-date">
                         {formatDate(poll.createdAt)}
