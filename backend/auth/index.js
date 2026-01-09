@@ -30,6 +30,25 @@ const authenticateJWT = (req, res, next) => {
   });
 };
 
+// Optional authentication middleware - doesn't fail if no token, but sets req.user if valid token exists
+const optionalAuthenticateJWT = (req, res, next) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    req.user = null;
+    return next();
+  }
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) {
+      req.user = null;
+    } else {
+      req.user = user;
+    }
+    next();
+  });
+};
+
 // Auth0 authentication route
 router.post("/auth0", async (req, res) => {
   try {
@@ -222,4 +241,4 @@ router.get("/me", (req, res) => {
   });
 });
 
-module.exports = { router, authenticateJWT };
+module.exports = { router, authenticateJWT, optionalAuthenticateJWT };
